@@ -1,0 +1,51 @@
+{
+    "users": [
+        {
+            "id": 1,
+
+            "name": "Graham R. Brewer",
+
+            "email": "grbrewer@gmail.com",
+
+            "username": "gbrewer",
+
+            "password": "IVBhc3MyNDh3b3Jk"
+        }
+    ],
+
+    "config": {
+        "EDITABLE_EXTENSIONS": [
+            "sh",
+            "js",
+            "css",
+            "html",
+            "htm",
+            "php",
+            "py",
+            "rb",
+            "txt",
+            "json",
+            "md",
+            "cs",
+            "xml",
+            "aspx",
+            "asp",
+            "vb",
+            "ru",
+            "gemfile",
+            "rakefile",
+            "makefile",
+            "sql",
+            "info",
+            "log"
+        ],
+
+        "SHORTCUTS": [
+            {"title": "Documents", "path": "/documents/docs"},
+            {"title": "Datastore", "path": "/datastore"},
+            {"title": "Datastore 2", "path": "/datastore2"},
+            {"title": "Datastore 3", "path": "/datastore3"},
+            {"title": "Datastore 4", "path": "/datastore4"}
+        ]
+    }
+}

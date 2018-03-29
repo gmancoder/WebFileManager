@@ -1,0 +1,10 @@
+DocumentRoot "/var/www/html/gmancoder.com/subdomains/files-torino"
+ServerName files-torino.gmancoder.com
+WSGIDaemonProcess files-torino user=gbrewer group=gbrewer threads=5
+WSGIScriptAlias / /var/www/html/gmancoder.com/subdomains/files-torino/file_manager.wsgi
+<Directory "/var/www/html/gmancoder.com/subdomains/files-torino">
+WSGIProcessGroup files-torino
+        WSGIApplicationGroup %{GLOBAL}
+        Order deny,allow
+        Allow from all
+</Directory>

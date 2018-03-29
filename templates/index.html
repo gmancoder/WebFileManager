@@ -1,0 +1,50 @@
+{% extends "layouts/layout.html" %}
+{% block body %}
+<div class="row" id="folder_selection">
+    <div class="col-md-8 col-md-offset-2">
+        <div class="panel panel-default">
+            <div class="panel-heading">Select Root Folder</div>
+            <div class="panel-body">
+                <form class="form-horizontal" role="form" method="POST" id="root_folder_form" action="">
+                    <div class="form-group">
+                        <input type="radio" name="root_path_start" id="root_path_start_webroot" onClick="HideProjectDisableRootBox("/var/www/html");" checked />&nbsp;Web Root (/var/www/html)<br />
+                        {% if host == 'SIERRA' %}
+                            <input type="radio" name="root_path_start" id="root_path_start_project" onClick="ShowProjectSelection();" />&nbsp;Project (Select Below)<br />
+                            {% for shortcut in shortcuts %}
+                                <input type="radio" name="root_path_{{title}}" id="{{shortcut['title']}}" onClick="HideProjectDisableRootBox('{{shortcut['path']}}');" />&nbsp;{{shortcut['title']}} ({{shortcut['path']}})<br />
+                            {% endfor %}
+                            <input type="radio" name="root_path_start" id="root_path_start_custom" onClick="EnableRootBox();" />&nbsp;Custom (Enter Below)
+                        {% endif %}
+                    </div>
+
+                    <div class="form-group" id="project_selection" style="display:none;">
+                        <label for="project" class="control-label col-lg-2">Select Project</label>
+                        <div class="col-lg-10">
+                            <select name="project" id="project" class="form-control" onChange="ProjectSelectionChanged();">
+                                <option value="">- Select -</option>
+                                {% for project in items %}
+                                <option value="{{project}}">{{project}}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="root_folder" class="control-label col-lg-2">Root Folder</label>
+                        <div class="col-lg-10">
+                            <input type="text" name="root_folder" id="root_folder" class="form-control" value="/var/www/html" readonly />
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-md-6 col-md-offset-4">
+                            <button type="submit" class="btn btn-primary">
+                                Select
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

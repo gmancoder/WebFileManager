@@ -1,0 +1,30 @@
+Thu Jul 27 14:54:21 EDT 2017
+commits:
+commits
+20170727144150.sh
+
+/projects/P01934/Web_Code_Manager_Development:
+file_manager.sierra.vhost
+file_manager.torino.vhost
+file_manager.wsgi
+Items matching the following exclusions were ignored: *.DS_Store;*.log
+commits:
+Checking in add: commits
+Checking in add, property (+x): 20170727144150.sh
+
+/projects/P01934/Web_Code_Manager_Development:
+Checking in add: file_manager.sierra.vhost
+Checking in add: file_manager.torino.vhost
+Checking in add: file_manager.wsgi
+
+functions:
+Checking in edit: tfs.py
+
+routes:
+Checking in edit: main.py
+
+templates:
+Checking in edit: index.html
+
+Changeset #34 checked in.
+Thu Jul 27 14:56:21 EDT 2017

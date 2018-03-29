@@ -1,0 +1,67 @@
+{% extends "layouts/layout_no_ribbon.html" %}
+{% block body %}
+<script src="/static/js/ace/ace.js" type="text/javascript"></script>
+<script type="text/javascript">
+    var editor;
+    $(document).ready(function() {
+        editor = ace.edit("editor");
+        editor.setTheme("ace/theme/twilight");
+        var file = '{{full_path}}';
+        var file_spl = file.split('.');
+        var ext = file_spl[file_spl.length - 1];
+        if(ext == 'js') { editor.getSession().setMode("ace/mode/javascript"); }
+        else if(ext == 'css') { editor.getSession().setMode("ace/mode/css"); }
+        else if(ext == 'html') { editor.getSession().setMode("ace/mode/html"); }
+        else if(ext == 'htm') { editor.getSession().setMode("ace/mode/html"); }
+        else if(ext == 'php') { editor.getSession().setMode("ace/mode/php"); }
+        else if(ext == 'py') { editor.getSession().setMode("ace/mode/python"); }
+        else if(ext == 'rb') { editor.getSession().setMode("ace/mode/ruby"); }
+        else if(ext == 'json') { editor.getSession().setMode("ace/mode/html"); }
+        else if(ext == 'md') { editor.getSession().setMode("ace/mode/markdown"); }
+        else if(ext == 'cs') { editor.getSession().setMode("ace/mode/csharp"); }
+        else if(ext == 'xml') { editor.getSession().setMode("ace/mode/xml"); }
+        else if(ext == 'aspx') { editor.getSession().setMode("ace/mode/html"); }
+        else if(ext == 'asp') { editor.getSession().setMode("ace/mode/vbscript"); }
+        else if(ext == 'vb') { editor.getSession().setMode("ace/mode/vbscript"); }
+        else if(ext == 'sql') { editor.getSession().setMode("ace/mode/sql"); }
+        else if(ext == 'sh') { editor.getSession().setMode("ace/mode/sh"); }
+        else { editor.getSession().setMode("ace/mode/text"); }
+        scaleFormHeight();
+    });
+
+    function Save(close_after) {
+        var file = '{{full_path}}';
+        var content = editor.getValue();
+        SaveContent(file, content, close_after);
+    }
+</script>
+<div class="row-fluid" id="editor_page">
+    <div class="col-md-12">
+        <div class="row" id="button-row">
+            <div class="col-md-8 view-col">
+                Editing <span id="path_to_file">{{full_path}}</span>
+            </div>
+            <div class="col-md-4 pull-right view-col" style="text-align:right;">
+                <input type="hidden" name="current_folder" id="current_folder" value="{{g.current_folder}}" />
+                <input type="hidden" name="root_folder" id="root_folder" value="{{g.root_folder}}" />
+                <p>
+                    <a href="javascript:;" onClick="Save(false);" class="btn btn-xs btn-default">
+                        <img src="static/img/AcidJs.Ribbon/icons/small/save.png" alt="Save" title="Save" width="16" />&nbsp;Save
+                    </a>
+                    <a href="javascript:;" onClick="Save(true);" class="btn btn-xs btn-default">
+                        <img src="static/img/AcidJs.Ribbon/icons/small/save-close.png" alt="Save and Close" title="Save and Close" width="16" />&nbsp;Save and Close
+                    </a>
+                    <a href="javascript:;" onClick="window.close();" class="btn btn-xs btn-default">
+                        <img src="/static/img/AcidJs.Ribbon/icons/small/logout.png" alt="Close" title="Close" width="16" />&nbsp;Close
+                    </a>
+                </p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <pre id="editor">{{content}}</pre>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

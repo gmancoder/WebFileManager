@@ -1,0 +1,10 @@
+DocumentRoot "/var/www/html/gmancoder.com/subdomains/files-sierra"
+ServerName files-sierra.gmancoder.com
+WSGIDaemonProcess files-sierra user=gbrewer group=gbrewer threads=5
+WSGIScriptAlias / /var/www/html/gmancoder.com/subdomains/files-sierra/file_manager.wsgi
+<Directory "/var/www/html/gmancoder.com/subdomains/files-sierra">
+WSGIProcessGroup files-sierra
+        WSGIApplicationGroup %{GLOBAL}
+        Order deny,allow
+        Allow from all
+</Directory>

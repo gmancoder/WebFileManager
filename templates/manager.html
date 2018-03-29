@@ -1,0 +1,63 @@
+{% extends "layouts/layout.html" %}
+{% block body %}
+<div class="row-fluid" id="manager">
+    <div class="col-md-3 view-col" id="folder-view">
+        <ul>
+            <li class="jstree-open">
+                <a href="{{g.root_folder}}" class="jstree-clicked"><strong>{{g.root_folder}}</strong></a>
+                {{items}}
+            </li>
+        </ul>
+    </div>
+    <div class="col-md-9" id="file-view">
+        <div class="row" id="button-row">
+            <div class="col-md-12 view-col">
+                <input type="hidden" name="current_folder" id="current_folder" value="{{g.current_folder}}" />
+                <input type="hidden" name="root_folder" id="root_folder" value="{{g.root_folder}}" />
+                <input type="hidden" name="tfs" id="tfs" value="{{g.tfs}}" />
+                <p>
+                    <a href="javascript:;" class="btn btn-xs btn-success" onClick="SetFolder('{{g.root_folder}}');">
+                        <img src="/static/img/home.png" alt="Home" title="Home" width="16" />&nbsp;Home
+                    </a>
+                    <a href="javascript:;" class="btn btn-xs btn-default" onClick="FolderUp();">
+                        <img src="/static/img/folder_up.png" alt="Up Level" title="Up Level" width="16" />&nbsp;Up One Level
+                    </a>
+                    <a href="javascript:;" class="btn btn-xs btn-default" onClick="SetFolder();">
+                        <img src="/static/img/reload.png" alt="Reload" title="Reload" width="16" />&nbsp;Reload
+                    </a>
+                    <a href="javascript:;" class="btn btn-xs btn-default" onClick="SelectAll('file_table_check');">
+                        <img src="/static/img/select_all.png" alt="Select All" title="Select All" width="16" />&nbsp;Select All
+                    </a>
+                    <a href="javascript:;" class="btn btn-xs btn-default" onClick="UnSelectAll('file_table_check');">
+                        <img src="/static/img/unselect_all.png" alt="Unselect All" title="Unselect All" width="16" />&nbsp;Unselect All
+                    </a>
+                </p>
+            </div>
+        </div>
+        <div class="row" id="file_table_row">
+            <div class="col-md-12" id="file_table_col">
+                <table id="file_table" width="100%" cellspacing="0" cellpadding="0" border="0">
+                    <thead>
+                        <tr>
+                            <th style="width:25px;text-align:center;">
+                                <input type="checkbox" id="toggle_all" name="toggle_all" onClick="ToggleAll('file_table');" value="1" />
+                            </th>
+                            <th style="width:50px;">Type</th>
+                            <th style="width:300px;">Name</th>
+                            <th style="width:100px;">Size</th>
+                            <th style="width:150px;">Last Modified</th>
+                        </tr>
+                    </thead>
+                    <tbody id="file_table_body"></tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    $(document).ready(function() {
+        TraverseOpenTree('folder-view');
+        //SetFolder('{{g.current_folder}}');
+    });
+</script>
+{% endblock %}
