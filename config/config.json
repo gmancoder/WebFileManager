@@ -5,11 +5,11 @@
 
             "name": "Graham R. Brewer",
 
-            "email": "grbrewer@gmail.com",
+            "email": "",
 
-            "username": "gbrewer",
+            "username": "",
 
-            "password": "IVBhc3MyNDh3b3Jk"
+            "password": ""
         }
     ],
 
@@ -42,10 +42,7 @@
 
         "SHORTCUTS": [
             {"title": "Documents", "path": "/documents/docs"},
-            {"title": "Datastore", "path": "/datastore"},
-            {"title": "Datastore 2", "path": "/datastore2"},
-            {"title": "Datastore 3", "path": "/datastore3"},
-            {"title": "Datastore 4", "path": "/datastore4"}
+            
         ]
     }
 }
